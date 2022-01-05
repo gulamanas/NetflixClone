@@ -7,24 +7,18 @@ const base_url = "https://image.tmdb.org/t/p/original/"
 function Row({ title, fetchUrl, isLargeRow }) {
     const [movies, setMovies] = useState([]);
 
-    // A snippet of code which runs based on a specific condition
     useEffect(() => {
         async function fetchData() {
             const request = await axios.get(fetchUrl)
-            console.log(request)
+            // console.log(request)
             setMovies(request.data.results);
         }
         fetchData();
-        // if [], run once when the row loads, and don't run again
     }, [fetchUrl]);
-    // console.table(movies)
 
     return (
-        <div>
-            {/* Title */}
+        <div className='row'>
             <h2>{title}</h2>
-
-            {/* Container -> posters */}
             <div className="row_posters">
                 {movies.map(movie => (
                     <img
@@ -35,8 +29,6 @@ function Row({ title, fetchUrl, isLargeRow }) {
                     />
                 ))}
             </div>
-
-
         </div>
     )
 }
