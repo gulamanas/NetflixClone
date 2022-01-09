@@ -8,16 +8,16 @@ function Banner() {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(requests.fetchNetflixOriginal);
+            const request = await axios.get(requests.fetchTrending);
             setMovie(request.data.results[
                 Math.floor(Math.random() * request.data.results.length - 1)
             ]);
             return request;
         }
         fetchData();
-    }, [])
+    }, []);
 
-    console.log(movie)
+    // console.log(movie)
 
     function truncate(str, n) {
         return str?.length > n ? str.sunstr(0, n - 1) + "..." : str;
